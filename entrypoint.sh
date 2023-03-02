@@ -1,13 +1,12 @@
 #!/bin/bash
-
+igdir="/usr/share/ig"
 curr=$(pwd)
 
-./_updatePublisher.sh -y
-chmod a+x _genonce.sh
-sed -i 's/bash/sh/g' _genonce.sh
-
+cd $igdir
 java -jar plantuml.jar -tsvg -o $1/input/images $1/input/images-source
 
 cd $1
-/usr/share/ig/_genonce.sh
+$igdir/_updatePublisher.sh -y
+chmod a+x $igdir/_genonce.sh
+$igdir/_genonce.sh
 cd $curr
